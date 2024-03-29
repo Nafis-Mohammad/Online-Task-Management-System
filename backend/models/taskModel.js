@@ -30,6 +30,12 @@ const TaskSchema = new mongoose.Schema({
             message: '{VALUE} is not a valid status for progress'
           }
     },
-})
+
+    createdBy: {
+        type: mongoose.Types.ObjectId,
+        ref: "User",
+        required: true,
+    }
+}, {timestamps: true})
 
 module.exports = mongoose.model("Task", TaskSchema)
