@@ -1,0 +1,89 @@
+/* * {
+    background-color: #1f1f1f;
+    color: white;
+    margin: 0;
+} */
+
+:link {
+    color: blue;
+}
+
+:link:hover {
+    color: black;
+}
+
+.back-arrow {
+    background-color: red;
+}
+
+.home-title {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.home-signup {
+    /* margin-left: 10px; */
+    /* margin-right: 20px; */
+    padding-right: 20px;
+}
+
+.home-label {
+    margin-right: 5px;
+}
+
+/* .home-login {
+    
+} */
+
+.home-login-signup {
+    /* background-color: red; */
+    margin: 0 auto;
+    /* width:100px; */
+    max-width: 300px;
+    justify-content: center;
+    display: flex;
+}
+
+.home-text {
+    font-size: 1.2em;
+    font-weight: 10;
+}
+
+.form-div {
+    /* background-color: red; */
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    max-width: 250px;
+    text-align: center;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.login-form, .signup-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-username {
+    margin-top: 20px;
+}
+
+
+.form-password {
+    margin-top: 20px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: indigo;
+    color: white;
+}
+
+.login-button, .signup-button {
+    width: 70px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 5px;
+}
