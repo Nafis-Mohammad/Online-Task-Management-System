@@ -1,79 +1,67 @@
 import React from 'react'
+import { Form, redirect } from 'react-router-dom'
 import axios from 'axios'
-import {useNavigate} from 'react-router-dom'
+
 import BackButton from '../components/BackButton'
 
+
+export async function handleSignup({ request }) {
+	const userFormData = await request.formData()
+	const userName = userFormData.get("userName")
+	const password = userFormData.get("password")
+	const userData = {
+		userName,
+		password
+	}
+	const msg = axios
+		.post('http://localhost:4000/api/user/signup', userData)
+		.then(() => {
+			return redirect('..')
+		})
+		.catch((error) => {
+			// setErrorMsg(error.response.data)
+			console.log(error.response.data);
+		})
+	return msg
+}
+
 const Signup = () => {
-  const [userFormData, setUserFormData] = React.useState(
-    {userName: "", password: ""}
-  )
+	return (
+		<div>
 
-  function handleChange(event) {
-    setUserFormData(prevUserFormData => {
-      return {
-        ...prevUserFormData,
-        [event.target.name]: event.target.value
-      }
-    })
-  }
+		<BackButton />
 
-  const navigate = useNavigate()
+		{/* { errorMsg && <h3 className='error-message'> {errorMsg} </h3> } */}
 
-  const handleUserSignup = (event) => {
-    event.preventDefault()
-    const userName = userFormData.userName
-    const password = userFormData.password
-    const userData = {
-      userName,
-      password
-    }
-    axios
-      .post('http://localhost:4000/api/user/signup', userData)
-      .then(() => {
-        navigate('/')
-      })
-      .catch((error) => {
-        alert("Error signing up")
-        console.log(error);
-      })
-  }
-    
+		<div className='form-div'>
+			<Form className='signup-form' method='post'>
+				<label className='form-username' htmlFor='username'>Username</label>
+				<input
+					id='username'
+					name='userName'
+					type='text'
+					required
+				/>
 
+				<label className='form-password' htmlFor='password'>Password</label>
+				<input
+					id='password'
+					name='password'
+					type='password'
+					required
+				/>
 
-  return (
-    <div>
+				<button 
+					type='submit'
+					className='signup-button'
+				>
+					Signup
+				</button>
+			</Form>
+		</div>
 
-      <BackButton />
-
-      <div className='form-div'>
-        <form className='signup-form' onSubmit={handleUserSignup}>
-          <label className='form-username' htmlFor='username'>Username</label>
-          <input
-            id='username'
-            name='userName'
-            type='text'
-            value={userFormData.userName}
-            onChange={handleChange}
-            required
-          />
-
-          <label className='form-password' htmlFor='password'>Password</label>
-          <input
-            id='password'
-            name='password'
-            type='password'
-            value={userFormData.password}
-            onChange={handleChange}
-            required
-          />
-          <button className='signup-button'>
-            Signup
-          </button>
-        </form>
-      </div>
-      
-    </div>
-  )
+		</div>
+	)
 }
 
 export default Signup

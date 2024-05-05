@@ -34,8 +34,18 @@ const TaskSchema = new mongoose.Schema({
     createdBy: {
         type: mongoose.Types.ObjectId,
         ref: "User",
-        required: true,
-    }
+        // required: true,
+    },
+
+    category: {
+        type: mongoose.Types.ObjectId,
+        ref: "Category",
+    },
+
+    project: {
+        type: mongoose.Types.ObjectId,
+        ref: "Project"
+    },
 }, {timestamps: true})
 
 module.exports = mongoose.model("Task", TaskSchema)

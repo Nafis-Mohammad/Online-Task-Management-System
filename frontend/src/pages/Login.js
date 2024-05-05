@@ -1,77 +1,83 @@
 import React from 'react'
+import { Form, redirect, useActionData } from 'react-router-dom'
 import axios from 'axios'
-import {useNavigate} from 'react-router-dom'
+
+import { setUserInfo } from '../utils/setUserInfo'
 import BackButton from '../components/BackButton'
 
+
+export async function handleLogin({ request }) {
+	const userFormData = await request.formData()
+	const userName = userFormData.get("userName")
+	const password = userFormData.get("password")
+	const userData = {
+		userName,
+		password
+	}
+
+	const response = await axios
+		.post('http://localhost:4000/api/user/login', userData)
+		.then((response) => {
+			// console.log(response);
+			return response
+			// return redirect('/userHome')
+		})
+		.catch((error) => {
+			console.log(error.response.data);
+			return error.response.data
+		})
+	// response.headers.authorization = `Bearer ${response.data.token}`
+	// console.log(response);
+
+	if(response.data) {
+		setUserInfo(response)
+		return redirect("/userHome")
+	}
+	else{
+		return response
+	}
+	}
+	
+
 const Login = () => {
-  const [userFormData, setUserFormData] = React.useState(
-    {userName: "", password: ""}
-  )
+	const msg = useActionData()
+	// console.log(msg);
+	return (
+		<div>
 
-  function handleChange(event) {
-    setUserFormData(prevUserFormData => {
-      return {
-        ...prevUserFormData,
-        [event.target.name]: event.target.value
-      }
-    })
-  }
+		<BackButton />
 
-  const navigate = useNavigate()
+		{ msg && <h3 className='error-message'> {msg} </h3> }
 
-  const handleUserLogin = (event) => {
-    event.preventDefault()
-    const userName = userFormData.userName
-    const password = userFormData.password
-    const userData = {
-      userName,
-      password
-    }
-    axios
-      .post('http://localhost:4000/api/user/login', userData)
-      .then(() => {
-        navigate('/userHome')
-      })
-      .catch((error) => {
-        alert("Error logging in")
-        console.log(error);
-      })
-  }
+		<div className='form-div'>
+			<Form className='login-form' method='post'>
+				<label className='form-username' htmlFor='username'>Username</label>
+				<input
+					id='username'
+					name='userName'
+					type='text'
+					required
+				/>
 
-  return (
-    <div>
+				<label className='form-password' htmlFor='password'>Password</label>
+				<input
+					id='password'
+					name='password'
+					type='password'
+					required
+				/>
 
-      <BackButton />
+				<button 
+					type='submit'
+					className='login-button'
+				>
+					Login
+				</button>
+			</Form>
+		</div>
 
-      <div className='form-div'>
-        <form className='login-form' onSubmit={handleUserLogin}>
-          <label className='form-username' htmlFor='username'>Username</label>
-          <input
-            id='username'
-            name='userName'
-            type='text'
-            value={userFormData.userName}
-            onChange={handleChange}
-            required
-          />
-
-          <label className='form-password' htmlFor='password'>Password</label>
-          <input
-            id='password'
-            name='password'
-            type='password'
-            value={userFormData.password}
-            onChange={handleChange}
-            required
-          />
-          <button className='login-button'>
-            Login
-          </button>
-        </form>
-      </div>
-
-    </div>
-  )
+		</div>
+	)
 }
 
 export default Login

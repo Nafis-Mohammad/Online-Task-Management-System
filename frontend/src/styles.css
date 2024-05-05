@@ -1,15 +1,18 @@
-/* * {
-    background-color: #1f1f1f;
-    color: white;
-    margin: 0;
-} */
+* {
+    /* background-color: #0B2434; */
+    /* color: white; */
+    /* margin: 0; */
+}
 
 :link {
     color: blue;
+    text-decoration: none;
 }
 
 :link:hover {
-    color: black;
+    color: indigo;
+    text-decoration: underline;
+    font-weight: bold;
 }
 
 .back-arrow {
@@ -86,4 +89,122 @@ button:hover {
     margin: 20px auto;
     background-color: white;
     border-radius: 5px;
+}
+
+.error-message {
+    text-align: center;
+    color: red;
+}
+
+.user-home-header {
+    display: flex;
+    align-items: center;
+}
+
+.welcome-title {
+    margin-right: auto;
+}
+
+.dashboard-header {
+    display: flex;
+    align-items: center;
+    /* background-color: blue; */
+}
+
+.dashboard-title {
+    margin-right: auto;
+    /* background-color: red; */
+}
+
+.create-task {
+    margin-right: 20px;
+    font-size: 1.2em;
+    /* margin: 0; */
+}
+
+.tasks-list {
+    margin-top: 20px;
+    /* background-color: blue; */
+    max-width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.task-card {
+    height: 240px;
+    width: 200px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: indigo;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+
+.task-card-info {
+    margin-top: auto;
+    /* background-color: yellow; */
+    height: 200px;
+    max-height: 210px;
+    margin-bottom: auto;
+}
+
+.task-card-interact {
+    display: flex;
+    justify-content: space-between;
+    /* background-color: blue; */
+}
+
+.task-card-icon {
+    font-size: 1.5em;
+}
+
+.task-card-about {
+    color: green;
+    margin-left: 10px;
+}
+
+.task-card-edit {
+    color: #cccc00;
+}
+
+.task-card-delete {
+    margin-right: 10px;
+    color: red;
+}
+
+.delete-task {
+    /* background-color: yellow; */
+    text-align: center;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 4px;
+    border-color: indigo;
+    width: 350px;
+}
+
+.delete-task-warning {
+    color: red;
+}
+
+.delete-task-button {
+    /* color: red; */
+}
+
+.user-home-nav {
+    /* background-color: #cccccc; */
+    /* color: red; */
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+    font-size: 1.2em;
+    /* border: solid; */
+    /* border-color: indigo; */
+}
+
+.category-project-tasks-list {
+    /* background-color: yellow; */
+    margin-bottom: 40px;
 }
