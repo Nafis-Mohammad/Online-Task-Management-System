@@ -3,24 +3,30 @@ Project created using MERN stack
 
 ## Task-Management-System
 Create and update tasks, sort them based on categories or as part of projects \
-Adding more features as i go
+Still adding more features as i go.
 
-## Setup
+### Setup
 
 To install the packages required:
 
-### npm install
-### cd frontend
-### npm install
+```
+npm install
+cd frontend
+npm install
+```
 
 
-## To Run
+### To Run
 
-Open two terminals \
+Open two terminals
 
 In terminal 1:
-### npm start
+```
+npm start
+```
 
 In terminal 2:
-### cd frontend
-### npm start
+```
+cd frontend
+npm start
+```
