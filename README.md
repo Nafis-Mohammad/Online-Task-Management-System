@@ -16,9 +16,9 @@ npm install
 ```
 
 2) Create a .env file and put the following there:
-MONGO_URI = insert-mongo-url-here
 
-JWT_SECRET = insert-your-jwtSecretKey-here
+MONGO_URI = insert-mongo-url-here \
+JWT_SECRET = insert-your-jwtSecretKey-here \
 JWT_LIFETIME = insert-your-jwtLifetime-here // needs to be a number followed by d, egs: 20d
 
 
