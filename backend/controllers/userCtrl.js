@@ -37,17 +37,24 @@ const loginUser = async (req, res) => {
 
 
 // this logout does nothing, logout is handled from the frontend
-const logoutUser = (req, res) => {
-    console.log(res.headers);
-    // req.delete("authorization")
-    // console.log(res.headers.authorization);  // clear authorization from res
-    // res.delete("authorization")
-    res.clearCookie('userInfo');
-    res.status(200).json({ message: 'Logged out successfully' });
-};
+// const logoutUser = (req, res) => {
+//     // console.log(res.headers);
+//     res.clearCookie('userInfo');
+//     res.status(200).json({ message: 'Logged out successfully' });
+// };
+
+
+const getUserName = (req, res) => {
+    try {const {userName} = req.user
+    return res.status(200).json({userName})
+    } catch(error) {
+        return res.status(500).json({msg: "Failed to get user", error})
+    }
+}
 
 module.exports = {
     createUser,
     loginUser,
-    logoutUser,
+    getUserName,
+    // logoutUser,
 }

@@ -16,7 +16,7 @@ export async function loader() {
 
     return Promise.all([allCategoriesPromise, allTasksPromise])
         .then((response) => {
-            console.log(response);
+            // console.log(response);
             return [response[0].data.categories, response[1].data.tasks]
         })
         .catch((error) => {

@@ -7,7 +7,7 @@ import Signup, {handleSignup} from './pages/Signup'
 import Login, {handleLogin} from './pages/Login'
 import Home from './pages/Home'
 import Dashboard, {loader as dashboardLoader} from './pages/Dashboard'
-import UserHome from './pages/UserHome'
+import UserHome, {loader as userHomeLoader} from './pages/UserHome'
 import CreateTask, {handleCreateTask} from './pages/CreateTask'
 import UpdateTask, {handleUpdateTask, loader as updateTaskLoader} from './pages/UpdateTask'
 import ViewTask, {loader as viewTaskLoader} from './pages/ViewTask'
@@ -41,10 +41,7 @@ const router = createBrowserRouter(createRoutesFromElements(
         <Route
             path='/userHome'
             element={<UserHome />}
-            loader={async () => {
-                await requireAuth()
-                return null
-            }}
+            loader={userHomeLoader}
         >
 
             <Route

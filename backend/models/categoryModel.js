@@ -7,13 +7,13 @@ const CategorySchema = new mongoose.Schema({
         // unique: true,
     },
 
-    task: [{ type: mongoose.Schema.Types.ObjectId, ref: "Task"}]
+    task: [{ type: mongoose.Schema.Types.ObjectId, ref: "Task"}],
 
-    // createdBy: {
-    //     type: mongoose.Types.ObjectId,
-    //     ref: "User",
+    createdBy: {
+        type: mongoose.Types.ObjectId,
+        ref: "User",
     //     required: true,
-    // }
+    }
     
 }, {timestamps: true})
 
