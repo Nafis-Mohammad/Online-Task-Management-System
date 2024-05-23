@@ -9,8 +9,14 @@ Still adding more features as i go.
 
 1) To install the packages required:
 
+On one terminal
 ```
+cd backend
 npm install
+```
+
+On another terminal
+```
 cd frontend
 npm install
 ```
